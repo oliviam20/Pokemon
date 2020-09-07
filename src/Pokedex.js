@@ -7,9 +7,11 @@ const Pokedex = ({
   exp,
   isWinner
 }) => {
-  let title = <h1 className="pokedex-loser">Losing Hand</h1>;
-  if (isWinner) {
-    title = <h1 className="pokedex-winner">Winning Hand</h1>;
+  let title = <h1 className="pokedex-loser">Better luck next time!</h1>;
+  if (!pokemon.length) {
+    title = <h1>Loading</h1>;
+  } else if (isWinner) {
+    title = <h1 className="pokedex-winner">Winner Winner Chicken Dinner!!</h1>;
   }
   return (
     <div className="pokedex">
@@ -21,13 +23,17 @@ const Pokedex = ({
             key={idx}
             id={p.id}
             name={p.name}
-            type={p.type}
+            types={p.types}
             exp={p.base_experience}
           />
         ))}
       </div>
     </div>
   )
+}
+
+Pokedex.defaultProps = {
+  pokemon: []
 }
 
 export default Pokedex;

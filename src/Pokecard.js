@@ -8,17 +8,20 @@ const padToThree = (number) => (number <= 999 ? `00${number}`.slice(-3) : number
 const Pokecard = ({
   id,
   name,
-  type,
+  types,
   exp
 }) => {
+  const splitName = name.split('-');
+  const formattedName = splitName.map(n => `${n[0].toUpperCase()}${n.slice(1)}`).join(' ');
+  const typesList = types.map((t, index) => <span key={index}>{t.type.name}</span>);
   return (
     <div className="pokecard">
-      <h1 className="pokecard-title">{name}</h1>
+      <h1 className="pokecard-title">{formattedName}</h1>
       <div className="pokecard-image">
-        <img src={`${POKE_API}${padToThree(id)}.png`} alt={name} />
+        <img src={`${POKE_API}${padToThree(id)}.png`} alt={formattedName} />
       </div>
-        <div className="pokecard-data">Type: {type}</div>
-        <div className="pokecard-data">EXP: {exp}</div>
+      <p className="pokecard-data">Type:{typesList}</p>
+      <p className="pokecard-data">EXP: {exp}</p>
     </div>
   )
 }

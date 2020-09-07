@@ -10,6 +10,16 @@
 
 .pokecard-data {
   font-size: 0.8rem;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.pokecard-data:last-child {
+  margin-bottom: 1rem;
+}
+
+.pokecard-data span {
+  margin-left: 0.5rem;
 }
 
 .pokecard-title {
@@ -23,7 +33,6 @@
   justify-content: center;
   align-items: center;
   height: 250px;
-  background-color: #eceff1;
   border-radius: 5px;
   margin-bottom: 1rem;
 }
